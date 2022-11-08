@@ -21,6 +21,7 @@ public class HelloWorld {
 //        System.out.println(myNumber); //EXPLOSION: java: reached end of file while parsing
 
         //Change your code to assign the value 3.14 to myNumber. What do you notice?
+//        long myNumber = 3.14; //EXPLOSION : 3.14 is not a long
 
         //Change your code to assign the value 123L (Note the 'L' at the end) to myNumber.
 
