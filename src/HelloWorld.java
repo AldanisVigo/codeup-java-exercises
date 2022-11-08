@@ -1,5 +1,5 @@
 public class HelloWorld {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         System.out.println("Helloooo World!!");
         // Create an int variable named myFavoriteNumber and assign your favorite number to it, then print it out to the console.
         int myFavorityNumber = 2;
@@ -36,4 +36,8 @@ public class HelloWorld {
          */
 
         //Change your code to declare myNumber as a float. Assign the value 3.14 to it. What happens? What are two ways we could fix this?
+//        float myNumber = 3.14; //EXPLOSION : must either be a cast from double to float or it must be tagged with the letter f for float
+//        float myNumber = 3.14f; //Fix 1
+//        float myNumber = (float) 3.14; //Fix 2
+    }
 }
