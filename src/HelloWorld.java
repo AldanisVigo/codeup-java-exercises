@@ -17,6 +17,8 @@ public class HelloWorld {
 //        myString = 3.14159; //EXPLOSION
 
         //Declare an long variable named myNumber, but do not assign anything to it. Next try to print out myNumber to the console. What happens?
+//        long myNumber;
+//        System.out.println(myNumber); //EXPLOSION: java: reached end of file while parsing
 
         //Change your code to assign the value 3.14 to myNumber. What do you notice?
 
