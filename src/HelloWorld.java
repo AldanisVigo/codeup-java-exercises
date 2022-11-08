@@ -27,9 +27,13 @@ public class HelloWorld {
 //        long myNumber = 123L;
 
         //Change your code to assign the value 123 to myNumber.
-        long myNumber = 123;
+//        long myNumber = 123;
 
         //Why does assigning the value 3.14 to a variable declared as a long not compile, but assigning an integer value does?
+        /*
+            Because 3.14 is a floating point number and cannot be assigned to a variable of type long. Assigning an integer works,
+            because the integer value falls within the range of long numbers.
+         */
 
         //Change your code to declare myNumber as a float. Assign the value 3.14 to it. What happens? What are two ways we could fix this?
 }
