@@ -64,6 +64,23 @@ public class HelloWorld {
 //        How is the above example different from the code block below?
 
 //        int three = (int) "three"; //It's not you still can't cast the string to an integer
+//        What are the two different types of errors we are observing?
+        /*
+            They pertain to incompatible types
+         */
+//        Rewrite the following expressions using the relevant shorthand assignment operators:
+//        int x = 4;
+//        x += 5;
+
+//        int x = 3;
+//        int y = 4;
+//        y *= x;
+
+        int x = 10;
+        int y = 2;
+        x /= y;
+        y -= x;
+
 
 
 
