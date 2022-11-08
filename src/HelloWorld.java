@@ -14,6 +14,7 @@ public class HelloWorld {
 //        myString = 'c'; //EXPLOSION
 
         //Change your code to assign the value 3.14159 to myString. What happens?
+//        myString = 3.14159; //EXPLOSION
 
         //Declare an long variable named myNumber, but do not assign anything to it. Next try to print out myNumber to the console. What happens?
 
