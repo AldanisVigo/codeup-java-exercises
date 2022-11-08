@@ -39,5 +39,24 @@ public class HelloWorld {
 //        float myNumber = 3.14; //EXPLOSION : must either be a cast from double to float or it must be tagged with the letter f for float
 //        float myNumber = 3.14f; //Fix 1
 //        float myNumber = (float) 3.14; //Fix 2
+
+        //Copy and paste the following code blocks one at a time and execute them
+//        int x = 5;
+//        System.out.println(x++);
+//        System.out.println(x);
+//        int x = 5;
+//        System.out.println(++x);
+//        System.out.println(x);
+//        What is the difference between the above code blocks? Explain why the code outputs what it does.
+        /*
+            The first block uses the value of x and then increments while the second block increments x and then uses the value.
+         */
+        //Try to create a variable named class. What happens?
+//        int class = 10; //EXPLOSION: class is a reserved keyword duhh.
+
+
+
+
+
     }
 }
