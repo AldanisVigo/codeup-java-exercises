@@ -54,6 +54,13 @@ public class HelloWorld {
         //Try to create a variable named class. What happens?
 //        int class = 10; //EXPLOSION: class is a reserved keyword duhh.
 
+//        Object is the most generic type in Java. You can assign any value to a variable of type Object. What do you think will happen when the following code is run?
+//        String theNumberThree = "three";
+//        Object o = theNumberThree;
+//        int three = (int) o;
+        /*
+            There will be an EXPLOSION because you're trying to cast the string into an integer (no-go)
+         */
 
 
 
