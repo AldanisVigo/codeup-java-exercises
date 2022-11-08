@@ -61,7 +61,9 @@ public class HelloWorld {
         /*
             There will be an EXPLOSION because you're trying to cast the string into an integer (no-go)
          */
+//        How is the above example different from the code block below?
 
+//        int three = (int) "three"; //It's not you still can't cast the string to an integer
 
 
 
