@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 
 public class ConsoleExercises {
@@ -11,6 +12,7 @@ public class ConsoleExercises {
         System.out.format("The value of pi is approximately %.2f",pi);
         // Prompt a user to enter a integer and store that value in an int variable using the nextInt method.
         Scanner myScanner = new Scanner(System.in);
+//        myScanner.useDelimiter("\n");
         System.out.println("\n\n\n");
         System.out.print("Yo give me an int yo: ");
         int myInt = myScanner.nextInt();
@@ -43,9 +45,13 @@ public class ConsoleExercises {
         // Use the nextLine method each time you need to get user input. In this case, we need it twice, once to get
         // the user input for the length and again to get the user input for the width. Parse the resulting strings
         // to a numeric type.
-        int roomWidth =  parseInt(myScanner.nextLine());
+        double roomWidth =  parseDouble(myScanner.nextLine());
+
         System.out.print("\nYo enter the length of your room now: ");
-        double roomLength = parseInt(myScanner.nextLine());
+        double roomLength = parseDouble(myScanner.nextLine());
+
+        System.out.print("\nYo enter the height of your room now: ");
+        double roomHeight = parseDouble(myScanner.nextLine());
 
         //Assume that the rooms are perfect rectangles.
         // Assume that the user will enter valid numeric data for length and width.
@@ -55,5 +61,8 @@ public class ConsoleExercises {
 
         //The area of a rectangle is equal to the length times the width, and the perimeter of a rectangle is equal to 2 times the length plus 2 times the width.
 
+        //Bonus:
+        //In your perimeter/area calculator: - Accept decimal entries. - Calculate the volume of the rooms in addition to the area and perimeter.
+        System.out.printf("\nAdditionally the volume of your room is %.2f",roomWidth * roomLength * roomHeight);
     }
 }
