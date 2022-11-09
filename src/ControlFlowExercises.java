@@ -40,5 +40,23 @@ public class ControlFlowExercises {
             System.out.printf("%.0f\n", q);
             q = Math.pow(q,2);
         }while(q < 1000000f);
+
+        for(int f = 5; f <= 15; f++){
+            System.out.printf("%d ",f);
+        }
+
+        for(int k = 0; k <= 100; k+=2){
+            System.out.printf("%d \n",k);
+        }
+
+        for(int u = 100; u >= -10; u-=5){
+            System.out.printf("%d \n",u);
+        }
+
+        int myNumber = 2;
+        for(int t = 0; t < 5; t++){
+            System.out.printf("%d \n",myNumber);
+            myNumber *= myNumber;
+        }
     }
 }
