@@ -10,24 +10,25 @@ public class Bob {
         // He answers 'Whatever.' to anything else.
         // Write the Java code necessary so that a user of your command line application can have a conversation with Bob.
         Scanner s = new Scanner(System.in);
-        while(true){
+        boolean keeprunning = true;
+        while(keeprunning){ //Loop forever and ever
             System.out.print("ME > ");
             String r = s.nextLine();
             boolean q = r.endsWith("?"); //is it a question?
             boolean y = r.endsWith("!"); //is it a yell?
             boolean eq = r.isEmpty(); //is it an empty question
-
+            boolean quit = r.equals("IWANNAQUIT"); //user wants to quit
             if(q){
                 System.out.println("BOB > Sure.");
             }else if(y){
                 System.out.println("BOB > Whoa, chill out!");
             }else if(eq){
                 System.out.println("BOB > Fine, Be that way!");
+            }else if(quit){
+                keeprunning = false; //Exit the loop
             }else {
                 System.out.println("BOB > Whatever.");
             }
-
-
         }
     }
 }
