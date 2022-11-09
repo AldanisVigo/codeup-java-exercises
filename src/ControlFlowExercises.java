@@ -134,12 +134,10 @@ public class ControlFlowExercises {
             //Consume their answer
             String ans = myScanner.nextLine();
 
-            //If their answer is yes
-            if (ans.equals("y")){
-                cont = true; //Keep up true
-            } else { //Otherwise
-                cont = false; //Exit the loop
-            }
+            //If their answer is yes ...
+            //Otherwise
+            //Exit the loop
+            cont = ans.equalsIgnoreCase("y"); //Keep up true
         }
         System.out.println("Thanks for playing!");
 
@@ -225,12 +223,10 @@ public class ControlFlowExercises {
             System.out.print("Would you like to continue (y/n) ?");
             String ans = myScanner.nextLine(); //Consume their answer
 
-            //If they want to continue
-            if (ans.equals("y")){
-                cont = true; //Keep us true
-            } else { //Otherwise
-                cont = false; //Exit the loop
-            }
+            //If they want to continue ...
+            //Otherwise
+            //Exit the loop
+            cont = ans.equalsIgnoreCase("y"); //Keep us true
         }
         System.out.println("Thanks for checking grades and stuff!");
     }
