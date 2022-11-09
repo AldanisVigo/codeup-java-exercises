@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class ControlFlowExercises {
     public static void main(String[] args){
 //        While
@@ -76,5 +78,50 @@ public class ControlFlowExercises {
                 System.out.println(o);
             }
         }
+
+//        Display a table of powers.
+//
+//        Prompt the user to enter an integer.
+//        Display a table of squares and cubes from 1 to the value entered.
+//        Ask if the user wants to continue.
+//        Assume that the user will enter valid data.
+//        Only continue if the user agrees to.
+//        Example Output
+//
+//
+//        What number would you like to go up to? 5
+//
+//        Here is your table!
+//
+//        number | squared | cubed
+//        ------ | ------- | -----
+//        1      | 1       | 1
+//        2      | 4       | 8
+//        3      | 9       | 27
+//        4      | 16      | 64
+//        5      | 25      | 125
+
+        boolean cont = true;
+        while(cont) {
+            System.out.print("What number would you like to go up to?");
+            Scanner myScanner = new Scanner(System.in);
+            int upTo = myScanner.nextInt();
+            myScanner.nextLine();
+            System.out.println("number\t| squared\t| cubed");
+            System.out.println("------\t| -------\t| -----");
+            for (int w = 1; w <= upTo; w++) {
+                double square = Math.pow(w, 2);
+                double cube = w * w * w;
+                System.out.format("%-6d\t| %-6.0f\t| %-6.0f\n", w, square, cube);
+            }
+            System.out.print("Would you like to continue (y/n): ");
+            String ans = myScanner.nextLine();
+            if (ans.equals("y")){
+                cont = true;
+            } else {
+                cont = false;
+            }
+        }
+        System.out.println("Thanks for playing!");
     }
 }
