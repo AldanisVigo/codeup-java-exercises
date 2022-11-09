@@ -70,10 +70,12 @@ public class ControlFlowExercises {
 //      For the multiples of five: print “Buzz”.
 //      For numbers which are multiples of both three and five: print “FizzBuzz”.
         for(int o = 1; o <= 100; o++){ //Iterate from 1 to 100.
-            if((o % 3) == 0){ //If the current iteration number is divisible by 3 evenly.
-                System.out.println("Fizz"); //Say fizz.
+            if((o % 3) == 0 && (o % 5 == 0)){ //If the current iteration number is divisible by 3 evenly.
+                System.out.println("FizzBuzz"); //Say fizz.
             }else if((o % 5) == 0){ //If it's divisible by 5 evenly.
                 System.out.println("Buzz"); //Say buzz.
+            }else if((o % 3) == 0){
+                System.out.println("Fizz");
             }else{ //Otherwise,
                 System.out.println(o); //Print out the number by itself.
             }
