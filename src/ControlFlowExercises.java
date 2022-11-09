@@ -69,13 +69,13 @@ public class ControlFlowExercises {
 //      For multiples of three: print “Fizz” instead of the number.
 //      For the multiples of five: print “Buzz”.
 //      For numbers which are multiples of both three and five: print “FizzBuzz”.
-        for(int o = 1; o <= 100; o++){
-            if((o % 3) == 0){
-                System.out.println("Fizz");
-            }else if((o % 5) == 0){
-                System.out.println("Buzz");
-            }else{
-                System.out.println(o);
+        for(int o = 1; o <= 100; o++){ //Iterate from 1 to 100.
+            if((o % 3) == 0){ //If the current iteration number is divisible by 3 evenly.
+                System.out.println("Fizz"); //Say fizz.
+            }else if((o % 5) == 0){ //If it's divisible by 5 evenly.
+                System.out.println("Buzz"); //Say buzz.
+            }else{ //Otherwise,
+                System.out.println(o); //Print out the number by itself.
             }
         }
 
@@ -101,27 +101,137 @@ public class ControlFlowExercises {
 //        4      | 16      | 64
 //        5      | 25      | 125
 
-        boolean cont = true;
-        while(cont) {
+        boolean cont = true; //Loop condition
+        while(cont) { //As long as the loop condition remains true
+
+            //Prompt the user for what number they'd like to generate the powers table
             System.out.print("What number would you like to go up to?");
+
+            //Create a scanner to read in the number
             Scanner myScanner = new Scanner(System.in);
+
+            //Consume the integer
             int upTo = myScanner.nextInt();
+
+            //Consume the newline character
             myScanner.nextLine();
+
+            //Print out the powers table header
             System.out.println("number\t| squared\t| cubed");
             System.out.println("------\t| -------\t| -----");
+
+            //Print out each number's row on the table
             for (int w = 1; w <= upTo; w++) {
-                double square = Math.pow(w, 2);
-                double cube = w * w * w;
+                double square = Math.pow(w, 2); //Calculate the square
+                double cube = w * w * w; //Calculate the cube
+                //Format the row spacing and print
                 System.out.format("%-6d\t| %-6.0f\t| %-6.0f\n", w, square, cube);
             }
+
+            //Ask the user if they'd like to continue in the loop
             System.out.print("Would you like to continue (y/n): ");
+
+            //Consume their answer
             String ans = myScanner.nextLine();
+
+            //If their answer is yes
             if (ans.equals("y")){
-                cont = true;
-            } else {
-                cont = false;
+                cont = true; //Keep up true
+            } else { //Otherwise
+                cont = false; //Exit the loop
             }
         }
         System.out.println("Thanks for playing!");
+
+//        Convert given number grades into letter grades.
+//
+//        Prompt the user for a numerical grade from 0 to 100.
+//        Display the corresponding letter grade.
+//        Prompt the user to continue.
+//        Assume that the user will enter valid integers for the grades.
+//        The application should only continue if the user agrees to.
+//        Grade Ranges:
+//
+//        A+: 100 - 94
+//        A : 93 - 92
+//        A- : 91 - 88
+//        B+ : 87 - 86
+//        B :  85  -83
+//        B- : 82 - 80
+//        C+ : 79 - 76
+//        C : 75 - 71
+//        C- : 70 - 67
+//        D+ : 66 - 65
+//        D  :  64 - 63
+//        D- :  62 - 60
+//        F+ : 59 - 56
+//        F  : 55 - 50
+//        F- : 49 - 0
+
+//        Edit your grade ranges to include pluses and minuses (ex: 99-100 = A+).
+
+
+        cont = true;
+        while(cont){
+            //Prompt the user for a grade integer value between 0 and 100
+            System.out.print("Please enter a grade between 0 and 100:");
+
+            //Create a scanner to consume the integer
+            Scanner myScanner = new Scanner(System.in);
+
+            //Consume the integer
+            int grade = myScanner.nextInt();
+
+            //Consume the newline character
+            myScanner.nextLine();
+
+            //Calculate the letter grade
+            if(grade <= 49 && grade >= 0){
+                System.out.printf("Your grade is %s\n","F-");
+            }else if(grade <= 55 && grade >= 50) {
+                System.out.printf("Your grade is %s\n", "F");
+            }else if(grade <= 59 && grade >= 56) {
+                System.out.printf("Your grade is %s\n", "F+");
+            }else if(grade <= 62 && grade >= 60) {
+                System.out.printf("Your grade is %s\n", "D-");
+            }else if(grade <= 64 && grade >= 63) {
+                System.out.printf("Your grade is %s\n", "D");
+            }else if(grade <= 66 && grade >= 65) {
+                System.out.printf("Your grade is %s\n", "D+");
+            }else if(grade <= 70 && grade >= 67) {
+                System.out.printf("Your grade is %s\n", "C-");
+            }else if(grade <= 75 && grade >= 71) {
+                System.out.printf("Your grade is %s\n", "C");
+            }else if(grade <= 79 && grade >= 76) {
+                System.out.printf("Your grade is %s\b", "C+");
+            }else if(grade <= 82 && grade >= 80) {
+                System.out.printf("Your grade is %s\n", "B-");
+            }else if(grade <= 85 && grade >= 83) {
+                System.out.printf("Your grade is %s\n", "B");
+            }else if(grade <= 87 && grade >= 86) {
+                System.out.printf("Your grade is %s\n", "B+");
+            }else if(grade <= 91 && grade >= 88) {
+                System.out.printf("Your grade is %s\n", "A-");
+            }else if(grade <= 93 && grade >= 92) {
+                System.out.printf("Your grade is %s\n", "A");
+            }else if(grade <= 100 && grade >= 94) {
+                System.out.printf("Your grade is %s\n", "A+");
+            }else{
+                //This is not a valid grade between 0 and 100
+                System.out.println("Invalid grade value");
+            }
+
+            //Ask the user if they would like to exit the loop or continue
+            System.out.print("Would you like to continue (y/n) ?");
+            String ans = myScanner.nextLine(); //Consume their answer
+
+            //If they want to continue
+            if (ans.equals("y")){
+                cont = true; //Keep us true
+            } else { //Otherwise
+                cont = false; //Exit the loop
+            }
+        }
+        System.out.println("Thanks for checking grades and stuff!");
     }
 }
