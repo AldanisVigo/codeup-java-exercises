@@ -125,7 +125,7 @@ public class ControlFlowExercises {
             //Print out each number's row on the table
             for (int w = 1; w <= upTo; w++) {
                 double square = Math.pow(w, 2); //Calculate the square
-                double cube = w * w * w; //Calculate the cube
+                double cube = Math.pow(w,3); //Calculate the cube
                 //Format the row spacing and print
                 System.out.format("%-6d\t| %-6.0f\t| %-6.0f\n", w, square, cube);
             }

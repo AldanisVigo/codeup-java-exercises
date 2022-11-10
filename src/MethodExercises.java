@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 import static java.lang.Double.parseDouble;
 
 public class MethodExercises {
@@ -37,7 +39,27 @@ public class MethodExercises {
         // int userInput = getInteger(1, 10);
         // If the input is invalid, prompt the user again.
         // Hint: recursion might be helpful here!
+        int userInput = getInteger(1, 10);
+        System.out.println();
+        System.out.println(userInput);
 
+
+        // Calculate the factorial of a number.
+        // Prompt the user to enter an integer from 1 to 10.
+        // Display the factorial of the number entered by the user.
+        // Ask if the user wants to continue.
+        // Use a for loop to calculate the factorial.
+        // Assume that the user will enter an integer, but verify it’s between 1 and 10.
+        // Use the long type to store the factorial.
+        // Continue only if the user agrees to.
+        // A factorial is a number multiplied by each of the numbers before it.
+        // Factorials are denoted by the exclamation point (n!). Ex:
+
+
+        // 1! = 1               = 1
+        // 2! = 1 x 2           = 2
+        // 3! = 1 x 2 x 3       = 6
+        // 4! = 1 x 2 x 3 x 4   = 24
     }
 
     //Add two doubles
@@ -72,5 +94,29 @@ public class MethodExercises {
     //Returns the mod of two operands
     public static double mod(double op1, double op2){
         return op1 % op2;
+    }
+
+
+    //Create a method that validates that user input is in a certain range and returns that input as an integer if it
+    // is within the given range. If not, prompt the user to input their number again until the input is within range.
+    //The method signature should look like this:
+    //public static int getInteger(int min, int max);
+    //and is used like this:
+    //System.out.print("Enter a number between 1 and 10: ");
+    //int userInput = getInteger(1, 10);
+    //If the input is invalid, prompt the user again.
+    //Hint: recursion might be helpful here!
+    public static int getInteger(int min, int max){
+        System.out.printf("I'm thinking of a number in a certain range guess what it is:");
+        Scanner myScanner = new Scanner(System.in);
+        int input = myScanner.nextInt();
+        myScanner.nextLine();
+        if(input <= max && input >= min){
+            System.out.printf("Congratulations the number %d is in the range %d to %d!",input,min,max);
+        }else{
+            System.out.println("Sorry that number is not in the range I'm thinking about.");
+            getInteger(min,max);
+        }
+        return input;
     }
 }
