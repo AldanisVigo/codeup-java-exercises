@@ -1,6 +1,8 @@
 package TextAdventureGame;
 
 import java.util.*;
+import static java.util.Map.Entry;
+
 
 public class CharacterDisplay {
     public static String[] mickey = {
@@ -29,7 +31,7 @@ public class CharacterDisplay {
     };
 
     public static String[] bart = {
-            "|\\/\\  ,.\n",
+            "     ,.\n",
             "    /   `' |,-,\n",
             "   /         /_\n",
             " _/            /\n",
@@ -53,8 +55,12 @@ public class CharacterDisplay {
     }
 
     public void printCharacter(String name) {
-        Arrays.stream(availableCharacters.get(name)).forEach((line) -> {
-            System.out.print(line);
-        });
+        Arrays.stream(availableCharacters.get(name)).forEach(System.out::print);
+    }
+
+    public void printCharacterAtIndex(int index){
+        Entry<String,String[]> selectedCharacter = (Entry<String,String[]>) availableCharacters.entrySet().toArray()[index];
+        System.out.printf("Character's Name: %s\n", selectedCharacter.getKey());
+        Arrays.stream(selectedCharacter.getValue()).forEach(System.out::print);
     }
 }

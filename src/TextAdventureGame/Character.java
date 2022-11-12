@@ -11,9 +11,9 @@ public class Character {
     private List<Weapon> weaponsStorage = new ArrayList<>();
 
     private String[] ascii;
-    private CharacterPosition characterPosition;
+    private Position characterPosition;
 
-    Character(String chosenName,CharacterPosition characterPosition,String[] characterAscii){ //Constructor will execute when a new instance of character is created
+    Character(String chosenName, Position characterPosition, String[] characterAscii){ //Constructor will execute when a new instance of character is created
         this.characterPosition = characterPosition; //Set the initial position of the character
         this.name = chosenName; //Give the new character the chosen name
         this.primaryWeapon = Weapon.Unarmed; //The character starts off with no weapons
