@@ -60,6 +60,31 @@ public class MethodExercises {
         // 2! = 1 x 2           = 2
         // 3! = 1 x 2 x 3       = 6
         // 4! = 1 x 2 x 3 x 4   = 24
+
+        boolean looping = true;
+
+        while(looping) {
+            System.out.print("Please enter a number between 1 and 10: ");
+            Scanner myScanner = new Scanner(System.in);
+            int myNumber = myScanner.nextInt();
+            myScanner.nextLine();
+            System.out.printf("%d! = ", myNumber);
+            int nextFactorial = 1;
+            for (int i = 1; i < myNumber; i++) {
+                nextFactorial *= i;
+                System.out.printf("%d x ", nextFactorial);
+            }
+            System.out.printf("%16s %d\n", "=", nextFactorial);
+            System.out.println();
+            System.out.print("Would you like to do another? (y/n) : ");
+            String a = myScanner.nextLine();
+            if(a.equalsIgnoreCase("y")){
+                continue;
+            }else{
+                break;
+            }
+        }
+
     }
 
     //Add two doubles
