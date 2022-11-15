@@ -22,7 +22,10 @@ public class Input {
         return this.scanner.nextLine();
     }
 
-    public boolean yesNo(){
+    public boolean yesNo(Optional<String> prompt){
+        if(prompt != null){
+            System.out.print("\n" + prompt.get());
+        }
         //If there's a line available in the scanner's input stream
         if(this.scanner.hasNextLine()){
             String nextLine = this.scanner.nextLine(); //Grab it
@@ -46,7 +49,7 @@ public class Input {
         int nextInt = Integer.MIN_VALUE; //Start off with the minimum value available for ints
         while(!inRange){ //As long as our flag is still not set
             if(prompt != null) { //If the optional prompt string is present
-                System.out.print(prompt.get()); //Get it and print it
+                System.out.print("\n" + prompt.get()); //Get it and print it
             }
             else System.out.print("\nEnter a number: "); //Otherwise print the regular prompt
             if(scanner.hasNextInt()){ //And there's integers in the scanner's input stream
@@ -71,7 +74,7 @@ public class Input {
         double nextDouble = Double.MIN_VALUE;
         while(!inRange){
             if(prompt != null) { //If the optional prompt string is present
-                System.out.print(prompt.get()); //Get it and print it
+                System.out.print("\n" + prompt.get()); //Get it and print it
             }
             else System.out.print("\nEnter a decimal number: "); //Otherwise print the regular prompt
             if (scanner.hasNextDouble()) {

@@ -17,7 +17,7 @@ public class InputTest {
         System.out.print("Yes or No? (true/false) | (y/n) | (yes/no):");
 
         //Call yesNo() on the instance
-        System.out.printf("Your Answer (y/n) %b\n",input.yesNo());
+        System.out.printf("Your Answer (y/n) %b\n",input.yesNo(null));
 
         //Let the use know we want an integer
         System.out.print("I'm thinking of an integer in a range, what is it? : ");
