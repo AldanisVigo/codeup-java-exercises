@@ -58,7 +58,7 @@ public class Input {
                 if(nextInt >= min && nextInt <= max){ //If the integer is in the range min-max
                     inRange = true; //Drop out of the loop
                 }else{
-                    System.out.println("Nah that's not in the range.");
+                    System.out.println("> Nah that's not in the range.");
                 }
             }else this.scanner.nextLine(); //Clear the \r \n from the scanner's input stream
         }
@@ -83,7 +83,7 @@ public class Input {
                 if(nextDouble >= min && nextDouble <= max){ //If the double is in range
                     inRange = true; //Exit condition has been met
                 }else{
-                    System.out.println("Nah that's not in the range.");
+                    System.out.println("> Nah that's not in the range.");
                 }
             }else this.scanner.nextLine(); //Clear the \r \n from the scanner's input stream
         }
