@@ -1,6 +1,8 @@
 package TextAdventureGame;
 
+import java.sql.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Character {
@@ -10,6 +12,10 @@ public class Character {
 
     private List<Weapon> weaponsStorage = new ArrayList<>();
 
+    private List<Equipment> primaryEquipment = new ArrayList<>();
+
+    private List<Equipment> equipmentStorage = new ArrayList<>();
+
     private String[] ascii;
     private Position characterPosition;
 
@@ -17,7 +23,8 @@ public class Character {
         this.characterPosition = characterPosition; //Set the initial position of the character
         this.name = chosenName; //Give the new character the chosen name
         this.primaryWeapon = Weapon.Unarmed; //The character starts off with no weapons
-        this.ascii = characterAscii;
+        this.ascii = characterAscii; //Set the ascii character for the character
+        this.primaryEquipment.add(Equipment.Unequipped);
     }
 
     /*

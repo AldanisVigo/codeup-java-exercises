@@ -16,6 +16,8 @@ public class Game {
 
         private int currentSelection;
 
+        private boolean gameStarted;
+
         Game(Scanner mainScanner){
             this.scanner = mainScanner;
 
@@ -40,7 +42,8 @@ public class Game {
             //Create the world state
             world = new WorldState();
 
-            //Set the character position
+            //Start with game not started
+            this.gameStarted = false;
 
             printMainMenu();
         }
@@ -198,8 +201,23 @@ public class Game {
         private void startGame(){
             if(this.characterSelected) {
                 System.out.println("Starting the game.");
+                this.gameStarted = true;
+                beginQuests();
             }else{
                 System.out.println("You must select a character first by entering the select_character command.");
+            }
+        }
+
+
+        private void beginQuests(){
+            Quests quests = new Quests(scanner);
+            for (Quest nextQuest : quests.availableQuests) { //Iterate through all the available quests
+                Position questPosition = nextQuest.getQuestPosition();
+                String questSymbol = nextQuest.getQuestMapSymbol();
+
+                //Create a game object for this quest
+                GameObject questObject = new GameObject(questSymbol,questPosition);
+                this.world.addWorldObject(questObject);
             }
         }
 

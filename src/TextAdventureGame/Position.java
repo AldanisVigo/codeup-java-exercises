@@ -71,7 +71,8 @@ public class Position {
 
     public static Map<String,Position> commonPlaces = Map.ofEntries(
             entry("home", new Position(10,'M')), //Center of home
-            entry("plaza", new Position(25,'W')) //Center of the plaza
+            entry("plaza", new Position(25,'W')), //Center of the plaza
+            entry("market", new Position(11,'X'))
     );
 
     Position(int startingX, int startingY){

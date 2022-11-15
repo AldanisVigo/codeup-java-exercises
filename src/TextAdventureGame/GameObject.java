@@ -3,7 +3,6 @@ package TextAdventureGame;
 public class GameObject {
     private String objectKey;
     private Position objectPosition;
-
     ObjectDisplay display;
 
     GameObject(String key, Position pos){
@@ -17,6 +16,6 @@ public class GameObject {
     }
 
     public Position getObjectPosition() {
-        return this.getObjectPosition();
+        return this.objectPosition;
     }
 }
