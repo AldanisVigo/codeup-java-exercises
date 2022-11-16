@@ -66,7 +66,13 @@ public class Input {
     }
 
     public int getInt(Optional<String> prompt){
-        return this.getInt(0,10,prompt);
+        if(prompt.get() != null){
+            System.out.print(prompt.get());
+        }
+
+        int myInt = this.scanner.nextInt();
+        scanner.nextLine();
+        return myInt;
     }
 
     public double getDouble(double min, double max,Optional<String> prompt){
