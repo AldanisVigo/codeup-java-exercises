@@ -89,6 +89,7 @@ public class MoviesApplication {
         System.out.println();
         System.out.print("Choose the category: ");
         int selectedCategory = this.scanner.nextInt() - 1;
+        this.scanner.nextLine();
         System.out.println();
         System.out.printf("New Movie Name: %s \nNew Movie Category: %s",movieName,this.categories[selectedCategory]);
         this.moviesArray.addMovie(new Movie(movieName,this.categories[selectedCategory]));
