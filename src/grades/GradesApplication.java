@@ -2,11 +2,9 @@ package grades;
 
 import util.Input;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
+import java.util.Optional;
 import java.util.Scanner;
-import java.util.function.BiConsumer;
 
 public class GradesApplication {
 //    Create a map for students and GitHub usernames
@@ -17,6 +15,100 @@ public class GradesApplication {
 //    Create at least 4 Student objects with at least 3 grades each, and add them to the map.
 //
 //    Be creative! Make up GitHub usernames and grades for your student objects.
+    public static void printGrades(Student student){
+        System.out.println("=======");
+        System.out.println("Grades:");
+        System.out.println("=======");
+        student.getGrades().forEach((grades)->{
+            System.out.printf("%d\n",grades);
+        });
+        System.out.println();
+    }
+
+    public static String getMenuResponse(HashMap students,Scanner myScanner){
+        // Print the list of GitHub usernames out to the console, and ask
+        // the user which student they would like
+        // to see more information about.The user should enter a GitHub
+        // username (i.e. one of the keys in your map).
+        System.out.println("Which student would you like to see more information about?");
+
+        // Give an option to view all the students grades
+        System.out.println("all - View all student's grades");
+        System.out.println("printcsv - Print a csv of all student's grades.");
+        System.out.println("classavg - View class average grade");
+
+        //Iterate through the student's key set
+        for (Object studentId : students.keySet()) {
+            //Get the student that corresponds to the current key in the key set
+            Student currentStudent = (Student) students.get(studentId);
+
+            //Print out the GitHub username - and the user's name
+            System.out.printf("%s - %s\n", studentId, currentStudent.getName());
+        }
+
+
+        //Ask the user to enter the username of the student they want more info about
+        System.out.print(" >>> ");
+
+        return myScanner.nextLine();
+    }
+
+    public static void askToContinue(Input myInput){
+        //Escape the program if they choose to exit
+        if(!myInput.yesNo("Would you like to continue?".describeConstable())){
+            System.exit(0);
+        };
+    }
+
+    public static void displayStudentsData(HashMap students, Input myInput, String whatToDisplay){
+        if(whatToDisplay.equals("grades")) {
+            System.out.println("==================");
+            System.out.println("Viewing All Grades");
+            System.out.println("==================");
+
+            //Iterate through the students
+            students.forEach((key, student) -> {
+                Student currentStudent = (Student) student; //Casting the student object to it's type
+                //And printing out relevant student information
+                System.out.printf(" ID: %s\t NAME: %s\t AVG: %f",
+                        key, currentStudent.getName(), currentStudent.getGradeAverage());
+                //Along with their grades table
+                printGrades(currentStudent);
+            });
+        }else if(whatToDisplay.equals("classaverage")){ //If the user wants to see an average class grade
+            //Accumulate the class's average grades
+            double classAverageTotal = 0;
+            for(Object studentObj : students.values()){
+                Student student = (Student) studentObj;
+                classAverageTotal += student.getGradeAverage();
+            }
+
+            //And calculate the average grade by dividing it by the number of students
+            double classAverageGrade = classAverageTotal / students.values().size();
+
+            //Print out the average class grade
+            System.out.println("=============================");
+            System.out.println("==== Average Class Grade ====");
+            System.out.println("=============================");
+            System.out.printf("Grade : %.2f\n\n", classAverageGrade);
+        }else if(whatToDisplay.equals("csv")){
+            System.out.println("=================================");
+            System.out.println("===== Printing Students CSV =====");
+            System.out.println("=================================");
+            System.out.println("name,github_username,average");
+
+            //Iterate through the students
+            students.forEach((key, student) -> {
+                Student currentStudent = (Student) student; //Casting the student object to it's type
+                //And printing out relevant student information
+                System.out.printf("%s,%f,%s\n",
+                        key, currentStudent.getGradeAverage(),currentStudent.getName());
+                //Along with their grades table
+//                printGrades(currentStudent);
+            });
+        }
+        askToContinue(myInput);
+    }
     public static void main(String[] args) {
         //Create a hashmap to store the students
         HashMap students = new HashMap<String,Student>();
@@ -51,56 +143,60 @@ public class GradesApplication {
         students.put("alvinmckenzie",s3);
         students.put("mickeymouse",s4);
 
+
+        //grab an instance of a scanner
         Scanner myScanner = new Scanner(System.in);
 
-        boolean outterloop = true;
+        //Grab an instance of the Input class
+        Input myInput = new Input(myScanner);
 
-        while(outterloop) {
-            boolean loop = true;
-            Student selectedStudent = null;
-            while (loop) {
-                // Print the list of GitHub usernames out to the console, and ask the user which student they would like
-                // to see more information about.The user should enter a GitHub username (i.e. one of the keys in your map).
-                System.out.println("Which student would you like to see more information about?");
+        //Boolean to help us escape the outer loop
+        boolean outerloop = true;
+        boolean innerloop = true; //Boolean for the inner loop
 
-                //Iterate through the student's key set
-                for (Object studentId : students.keySet()) {
-                    //Get the student that corresponds to the current key in the keyset
-                    Student currentStudent = (Student) students.get(studentId);
+        do {
+            Student selectedStudent = null; //Placeholder for the selected student
+            do {
+                //Show the menu and wait for a response
+                String selectedStudentKey = getMenuResponse(students,myScanner);
 
-                    //Print out the github username - and the user's name
-                    System.out.printf("%s - %s\n", studentId, currentStudent.getName());
-                }
-
-
-                //Ask the user to enterthe username of the student they want more info about
-                System.out.print("Type in the github id of the student you want more info about:");
-
-                //Grab what they typed in
-                String selectedStudentKey = myScanner.nextLine();
-
-                // If the given input does not match up with a key in your map, tell the user that no users with that username
-                // were found. If the given username does exist, display information about that student, including their name
+                // If the given input does not match up with a key in your map, tell the user that no users with
+                // that username
+                // were found. If the given username does exist, display information about that student,
+                // including their name
                 // and their grades.
 
                 //Check if what they typed in is a key in the students map
-                if (students.containsKey(selectedStudentKey)) {
-                    selectedStudent = (Student) students.get(selectedStudentKey);
-                    loop = false; //If it is, then stop looping.
+                if(selectedStudentKey.equals("all")){
+                    displayStudentsData(students,myInput,"grades");
+                } else if(selectedStudentKey.equals("classavg")){
+                    displayStudentsData(students,myInput,"classaverage");
+                } else if(selectedStudentKey.equals("printcsv")){
+                    displayStudentsData(students,myInput,"csv");
+                } else if (students.containsKey(selectedStudentKey)) { //If they typed in a student id instead
+                    selectedStudent = (Student) students.get(selectedStudentKey); //Cast the student down to it's type
+                    innerloop = false; //Eject out of the loop
                 }
-            }
+            } while (innerloop);
 
-            if (selectedStudent != null) {
-                System.out.printf("%s's average grade is %f\n", selectedStudent.getName(), selectedStudent.getGradeAverage());
+            //Once we exit the loop
+            if (selectedStudent != null) { //If a student was selected
+                //Print out the user's average grade
+                System.out.printf("%s's average grade is %f\n",
+                        selectedStudent.getName(), selectedStudent.getGradeAverage());
+
+                //BONUS : Display all the student's grades in addition to the grade average.
+                printGrades(selectedStudent);
 
                 // After the information is displayed, the application should ask the user if they want to continue,
                 // and keep running so long as the answer is yes.
-                Input myInput = new Input(myScanner);
-                boolean wouldLikeToContinue = myInput.yesNo("Would you like to continue?".describeConstable());
-                if(!wouldLikeToContinue){
-                    outterloop = false;
+                boolean  wouldLikeToContinue = myInput.yesNo("Would you like to continue?".describeConstable());
+                System.out.println("You answered " + wouldLikeToContinue);
+                if(wouldLikeToContinue == false){
+                    System.exit(0);
                 }
+                selectedStudent = null; //Clear the selected student
             }
-        }
+        } while(outerloop); //As long as the outer loop boolean is true
     }
 }

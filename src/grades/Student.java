@@ -36,6 +36,10 @@ public class Student {
         return total / this.grades.size();
     }
 
+    public ArrayList<Integer> getGrades() {
+        return this.grades;
+    }
+
     // Test your Student class by creating a StudentTest class, adding a main method and creating Student objects.
     // Verify that you can add grades to each object, and that your getGradeAverage method correctly returns the
     // average of the student's grades.
