@@ -5,31 +5,6 @@ import static java.util.Map.Entry;
 
 
 public class CharacterDisplay {
-    public static String[] mickey = {
-            "                       _____\n",
-            "                   .d88888888bo.\n",
-            "                 .d8888888888888b.\n",
-            "                 8888888888888888b\n",
-            "                 888888888888888888\n",
-            "                 888888888888888888\n",
-            "                  Y8888888888888888\n",
-            "            ,od888888888888888888P\n",
-            "         .'`Y8P'```'Y8888888888P'\n",
-            "       .'_   `  _     'Y88888888b\n",
-            "      /  _`    _ `      Y88888888b   ____\n",
-            "   _  | /  \\  /  \\      8888888888.d888888b.\n",
-            "  d8b | | /|  | /|      8888888888d8888888888b\n",
-            " 8888_\\ \\_|/  \\_|/      d888888888888888888888b\n",
-            " .Y8P  `'-.            d88888888888888888888888\n",
-            "/          `          `      `Y8888888888888888\n",
-            "|                        __    888888888888888P\n",
-            " \\                       / `   dPY8888888888P'\n",
-            "  '._                  .'     .'  `Y888888P`\n",
-            "     `\"'-.,__    ___.-'    .-'\n",
-            "         `-._````  __..--'`\n",
-            "             ``````\n"
-    };
-
     public static String[] bart = {
             "     ,.\n",
             "    /   `' |,-,\n",
@@ -45,13 +20,53 @@ public class CharacterDisplay {
             "     `._..-'"
     };
 
+    public static String[] casper = {
+            "    .-----.\n",
+            "   .' -   - '.\n",
+            "  /  .-. .-.  \\\n",
+            "  |  | | | |  |\n",
+            "   \\ \\o/ \\o/ /\n",
+            "  _/    ^    \\_\n",
+            " | \\  '---'  / |\n",
+            " / /`--. .--`\\ \\\n",
+            "/ /'---` `---'\\ \\\n",
+            "'.__.       .__.'\n",
+            "    `|     |`\n",
+            "     |     \\\n",
+            "     \\      '--.\n",
+            "      '.        `\\\n",
+            "        `'---.   |\n",
+            "           ,__) /\n",
+            "            `..'\n"
+    };
+
+    public static String[] homer = {
+            "    ___\n",
+            "   //_\\\\_\n",
+            " .\"\\\\    \".\n",
+            " .\"\\\\    \".\n",
+            "/          \\\n",
+            "|           \\_\n",
+            "|       ,--.-.)\n",
+            " \\     /  o \\o\\\n",
+            " /\\/\\  \\    /_/\n",
+            "  (_.   `--'__)\n",
+            "   |     .-'  \\\n",
+            "   |  .-'.     )\n",
+            "   | (  _/--.-'\n",
+            "   |  `.___.'\n",
+            "         (\n"
+    };
+
     public Map<String,String[]> availableCharacters = new HashMap<>();
 
     CharacterDisplay(){
-        //Create the mickey character
-        availableCharacters.put("mickey",mickey);
         //Create the bart character
         availableCharacters.put("bart",bart);
+        //Create the homer character
+        availableCharacters.put("homer",homer);
+        //Create the casper character
+        availableCharacters.put("casper",casper);
     }
 
     public void printCharacter(String name) {

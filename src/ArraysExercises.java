@@ -18,29 +18,40 @@ public class ArraysExercises {
 //    Create a static method named addPerson. It should accept an array of Person objects, as well as a single person
 //    object to add to the passed array. It should return an array whose length is 1 greater than the passed array,
 //    with the passed person object at the end of the array.
+    private Person[] myPersons;
 
-    public static Person[] addPerson(Person[] persons,Person additionalPerson){
+    public void addPerson(Person[] persons,Person additionalPerson){
         Person[] newPersonArray = new Person[persons.length + 1];
-        newPersonArray[persons.length] = additionalPerson;
-        return newPersonArray;
+        for(int per = 0; per < persons.length;per++){
+            newPersonArray[per] = persons[per];
+        }
+        newPersonArray[newPersonArray.length - 1] = additionalPerson;
+        this.myPersons = newPersonArray;
     }
+
+
+
+    public ArraysExercises(){
+        this.myPersons =  new Person[]{
+                new Person("John"),
+                new Person("Danny"),
+                new Person("Matthew")
+        };
+    };
 
     public static void main(String[] args){
         int[] numbers = {1, 2, 3, 4, 5};
         System.out.println(Arrays.toString(numbers));
 
-        // Create an array that holds 3 Person objects.
-        Person[] persons = new Person[3];
+        //Get an instance of ArrayExercises so we can access .AddPerson
+        ArraysExercises exercises = new ArraysExercises();
 
-        // Assign a new instance of the Person class to each element.
-//        Arrays.fill(persons,new Person());
-        persons[0] = new Person("John");
-        persons[1] = new Person("Danny");
-        persons[2] = new Person("Matthew");
+        //Adding a person
+        exercises.addPerson(exercises.myPersons,new Person("Someone Cool"));
 
         // Iterate through the array and print out the name of each person in the array.
         // Arrays.stream(persons).forEach((person) -> System.out.println(person.getName()));
-        for(Person per : persons){
+        for(Person per : exercises.myPersons){
             System.out.println(per.getName());
         }
     }

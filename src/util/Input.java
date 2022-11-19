@@ -22,6 +22,8 @@ public class Input {
         return this.scanner.nextLine();
     }
 
+    Optional<String> myOptional = null;
+
     public boolean yesNo(Optional<String> prompt){
         if(prompt != null){
             System.out.print("\n" + prompt.get());
