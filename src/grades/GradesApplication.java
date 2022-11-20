@@ -3,6 +3,7 @@ package grades;
 import util.Input;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -16,9 +17,9 @@ public class GradesApplication {
 //
 //    Be creative! Make up GitHub usernames and grades for your student objects.
     public static void printGrades(Student student){
-        System.out.println("=======");
-        System.out.println("Grades:");
-        System.out.println("=======");
+        System.out.println("======================");
+        System.out.println("======= Grades =======");
+        System.out.println("======================");
         student.getGrades().forEach((grades)->{
             System.out.printf("%d\n",grades);
         });
@@ -60,6 +61,15 @@ public class GradesApplication {
         };
     }
 
+    public static void printDaysMissed(Student student){
+        List<String> daysMissed = student.findDaysAbsent();
+        System.out.println("================================");
+        System.out.printf("======= Days Missed %d =========\n",daysMissed.size());
+        System.out.println("================================");
+        daysMissed.forEach((day)->System.out.printf("MISSED DAY: %s\n",day));
+        System.out.println();
+    }
+
     public static void displayStudentsData(HashMap students, Input myInput, String whatToDisplay){
         if(whatToDisplay.equals("grades")) {
             System.out.println("==================");
@@ -70,8 +80,8 @@ public class GradesApplication {
             students.forEach((key, student) -> {
                 Student currentStudent = (Student) student; //Casting the student object to it's type
                 //And printing out relevant student information
-                System.out.printf(" ID: %s\t NAME: %s\t AVG: %f",
-                        key, currentStudent.getName(), currentStudent.getGradeAverage());
+                System.out.printf(" ID: %s\t NAME: %s\t AVG: %.2f\t ATTDCE:%.2f\n",
+                        key, currentStudent.getName(), currentStudent.getGradeAverage(),currentStudent.attendancePercentage());
                 //Along with their grades table
                 printGrades(currentStudent);
             });
@@ -95,14 +105,14 @@ public class GradesApplication {
             System.out.println("=================================");
             System.out.println("===== Printing Students CSV =====");
             System.out.println("=================================");
-            System.out.println("name,github_username,average");
+            System.out.println("name,github_username,average_grade,attendance");
 
             //Iterate through the students
             students.forEach((key, student) -> {
                 Student currentStudent = (Student) student; //Casting the student object to it's type
                 //And printing out relevant student information
-                System.out.printf("%s,%f,%s\n",
-                        key, currentStudent.getGradeAverage(),currentStudent.getName());
+                System.out.printf("%s,%s,%.2f%%,%.2f%%\n",
+                        currentStudent.getName(), key, currentStudent.getGradeAverage(),currentStudent.attendancePercentage() * 100);
                 //Along with their grades table
 //                printGrades(currentStudent);
             });
@@ -119,11 +129,23 @@ public class GradesApplication {
         s1.addGrade(30);
         s1.addGrade(50);
 
+        //Add student one attendance
+        s1.recordAttendance("2022-09-05","P");
+        s1.recordAttendance("2022-09-06","A");
+        s1.recordAttendance("2022-09-07","P");
+        s1.recordAttendance("2022-09-09","A");
+
         //Create student two
         Student s2 = new Student("John Krsak");
         s2.addGrade(100);
         s2.addGrade(90);
         s2.addGrade(100);
+
+        //Add student two attendance
+        s2.recordAttendance("2022-09-05","A");
+        s2.recordAttendance("2022-09-06","A");
+        s2.recordAttendance("2022-09-07","P");
+        s2.recordAttendance("2022-09-09","P");
 
         //Create student three
         Student s3 = new Student("Alvin McKenzie");
@@ -131,11 +153,23 @@ public class GradesApplication {
         s3.addGrade(99);
         s3.addGrade(100);
 
+        //Add student one attendance
+        s3.recordAttendance("2022-09-05","A");
+        s3.recordAttendance("2022-09-06","P");
+        s3.recordAttendance("2022-09-07","A");
+        s3.recordAttendance("2022-09-09","P");
+
         //Create student four
         Student s4 = new Student("Mickey Mouse");
         s4.addGrade(100);
         s4.addGrade(39);
         s4.addGrade(30);
+
+        //Add student four attendance
+        s4.recordAttendance("2022-09-05","A");
+        s4.recordAttendance("2022-09-06","A");
+        s4.recordAttendance("2022-09-07","A");
+        s4.recordAttendance("2022-09-09","A");
 
         //Add students 1 - 4 to the map of students
         students.put("aldanisvigo",s1);
@@ -187,6 +221,11 @@ public class GradesApplication {
 
                 //BONUS : Display all the student's grades in addition to the grade average.
                 printGrades(selectedStudent);
+
+                System.out.printf("%s's average attendance is %f\n",
+                        selectedStudent.getName(), selectedStudent.attendancePercentage() * 100);
+                //Print days missed
+                printDaysMissed(selectedStudent);
 
                 // After the information is displayed, the application should ask the user if they want to continue,
                 // and keep running so long as the answer is yes.

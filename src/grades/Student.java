@@ -1,6 +1,8 @@
 package grades;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Student {
@@ -10,10 +12,13 @@ public class Student {
     //Field to keep track of student's grades
     private ArrayList<Integer> grades;
 
+    private HashMap<String,String> attendance;
+
     //Constructor
     public Student(String name){
         this.name = name; //Set the name to the name passed into the instance constructor
         this.grades = new ArrayList<>(); //Initialize the grades as an empty ArrayList
+        this.attendance = new HashMap<>(); //Initialize the attendance hashmap
     }
 
 
@@ -50,5 +55,55 @@ public class Student {
             student.addGrade(100 - (i * 5));
             System.out.println("GPA : " + student.getGradeAverage());
         }
+
+        student.recordAttendance("2022-09-01","A");
+        student.recordAttendance("2022-09-02","P");
+        System.out.println(student.findDaysAbsent().size());
+        System.out.printf("Attendance Percentage : %.2f",student.attendancePercentage());
+    }
+
+    /*
+        Method to add attendance record to the attendance HashMap
+    */
+    public void recordAttendance(String date,String value){
+        //Add a method named recordAttendance(String date, String value)
+        // that adds records to the HashMap. This method should make sure
+        // value is an acceptable string.
+
+        if(date.equals(null) || value.equals(null)){ //If either of the required fields are not present
+            System.out.println("You must provide a date in the format YYYY-MM-DD and a status P - Present or A - Absent");
+        } else {
+            this.attendance.put(date, value);
+        }
+    }
+
+    //Create an instance method on your Student class to calculate a student's attendance percentage --
+    // (Total Days - Absences) / Total Days.
+    public double attendancePercentage(){
+        int totalAbsent = 0;
+        int totalPresent = 0;
+        for(String attendanceValue : attendance.values()){
+            if(attendanceValue.equals("A")){
+                totalAbsent++;
+            }else if(attendanceValue.equals("P")){
+                totalPresent++;
+            }
+        }
+        double percent = ((double) totalPresent / ((double) totalPresent + (double) totalAbsent));
+        return percent;
+    }
+
+    // Create an instance method on Student that finds the specific days a student was absent.
+    // This method should return a List of Strings, where each string is the date of the absence.
+    public List<String> findDaysAbsent(){
+        List<String> daysAbsent = new ArrayList<>();
+        for(String date : this.attendance.keySet()) {
+            String attendanceValue = this.attendance.get(date);
+            if(attendanceValue.equals("A")){
+                daysAbsent.add(date);
+            }
+        }
+        return daysAbsent;
     }
 }
+
