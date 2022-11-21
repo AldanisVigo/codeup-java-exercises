@@ -73,13 +73,18 @@ public class Input {
     }
 
     public int getInt(Optional<String> prompt){
-        if(prompt.get() != null){
+        if(prompt != null){
             System.out.print(prompt.get());
         }
 
-        int myInt = this.scanner.nextInt();
-        scanner.nextLine();
-        return myInt;
+        if(this.scanner.hasNextInt()) {
+            int myInt = this.scanner.nextInt();
+            scanner.nextLine();
+            return myInt;
+        }else{
+            scanner.nextLine();
+            return Integer.MIN_VALUE;
+        }
     }
 
     public double getDouble(double min, double max,Optional<String> prompt){

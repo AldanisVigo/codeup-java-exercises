@@ -3,6 +3,8 @@ package grocerylistapp;
 import java.sql.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Stream;
 
 public class GroceryList {
 
@@ -32,16 +34,16 @@ public class GroceryList {
     /*
         Method for printing out the menu of available categories
      */
-    public void printCategoriesMenu(){
+    public static void printCategoriesMenu(){
         //Display the menu header
         System.out.println("===================================");
         System.out.println("======== Grocery Categories =======");
         System.out.println("===================================");
 
         //Iterate through the available categories
-        for(int i = 0; i < this.availableCategories.size(); i++){
+        for(int i = 0; i < availableCategories.size(); i++){
             //And print out the category id and it's name
-            System.out.printf("%d - %s\n",i,this.availableCategories.get(i));
+            System.out.printf("%d - %s\n",i,availableCategories.get(i));
         }
         //Add an empty line for looks
         System.out.println();
@@ -73,6 +75,21 @@ public class GroceryList {
      */
     public void updateGroceryItem(int categoryId, int itemIndex, GroceryItem editedItem){
         this.list.get(categoryId).get(itemIndex).updateWith(editedItem);
+    }
+
+    /*
+        Method for deleting a grocery item based on a category and item index
+     */
+    public void deleteCategoryItem(int categoryId, int itemIndex){
+
+        //Get all the existing items from the list for the given category
+        List<GroceryItem> existingItems = list.get(categoryId);
+
+        //Get a filtered stream which excludes the item at the given index
+        Stream<GroceryItem> filteredItems = existingItems.stream().filter(item->existingItems.indexOf(item) != itemIndex);
+
+        //Replace the existing list of items for the category with the filtered list
+        list.put(categoryId, (ArrayList<GroceryItem>) filteredItems.toList());
     }
 
     /*

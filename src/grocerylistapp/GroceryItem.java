@@ -10,11 +10,19 @@ public class GroceryItem implements Comparable {
     //Field for storing the id of the category the item falls under
     private int category_id;
 
-    //Constructor
+    public void setCategoryId(int id){
+        this.category_id = id;
+    }
+
+    //Overloaded Constructor
     public GroceryItem(int category_id,String name, int qty){
         this.category_id = category_id;
         this.name = name;
         this.qty = qty;
+    }
+
+    //Default Constructor
+    public GroceryItem(){
     }
 
     //Method for updating the current grocery item with the values of the given grocery item
@@ -34,9 +42,19 @@ public class GroceryItem implements Comparable {
         return this.name;
     }
 
+    //Method for setting the name of the grocery item
+    public void setName(String name){
+        this.name = name;
+    }
+
     //Method for getting the quantity of this grocery item
     public int getQty(){
         return this.qty;
+    }
+
+    //Method for setting the quantity of this grocery item
+    public void setQty(int qty){
+        this.qty = qty;
     }
 
     //Method required to conform to the Comparable interface
