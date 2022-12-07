@@ -20,6 +20,13 @@ public class GradesApplication {
         System.out.println("======================");
         System.out.println("======= Grades =======");
         System.out.println("======================");
+//        var grades = student.getGrades();
+
+//        while(student.getGrades().hasNext()){
+//            System.out.printf("%d\n",student.getGrades().next());
+//        }
+        System.out.println("Address of grades in memory from Grades App:");
+        System.out.println(student);
         student.getGrades().forEach((grades)->{
             System.out.printf("%d\n",grades);
         });
@@ -42,7 +49,8 @@ public class GradesApplication {
         for (Object studentId : students.keySet()) {
             //Get the student that corresponds to the current key in the key set
             Student currentStudent = (Student) students.get(studentId);
-
+//            var currentStudentGrades = currentStudent.getGrades();
+//            currentStudentGrades.clear();
             //Print out the GitHub username - and the user's name
             System.out.printf("%s - %s\n", studentId, currentStudent.getName());
         }

@@ -2,6 +2,7 @@ package grades;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -18,6 +19,8 @@ public class Student {
     public Student(String name){
         this.name = name; //Set the name to the name passed into the instance constructor
         this.grades = new ArrayList<>(); //Initialize the grades as an empty ArrayList
+        System.out.println("Address in memory of grades within student class:");
+        System.out.println(this);
         this.attendance = new HashMap<>(); //Initialize the attendance hashmap
     }
 
@@ -42,7 +45,7 @@ public class Student {
     }
 
     public ArrayList<Integer> getGrades() {
-        return this.grades;
+        return new ArrayList<>(this.grades);
     }
 
     // Test your Student class by creating a StudentTest class, adding a main method and creating Student objects.
