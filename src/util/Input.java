@@ -73,6 +73,8 @@ public class Input {
     }
 
     public int getInt(Optional<String> prompt){
+        //TODO: Update code to use try catch
+
         if(prompt != null){
             System.out.print(prompt.get());
         }
