@@ -1,8 +1,6 @@
 import java.util.Scanner;
 
-import static java.lang.Double.parseDouble;
-
-public class MethodExercises {
+public class MethodsExercises {
     public static void main(String[] args){
         // Create a class named MethodsExercises. Inside of your class, write code to create the specified
         // methods. Test your code by creating a main method and calling each of the methods you've created.
